@@ -1,0 +1,12 @@
+[
+    {
+        "first_name": "Admin",
+        "last_name": "Admin",
+        "middle_name": "Admin",
+        "phone": "998908424349",
+        "role_id": 1,
+        "organization_id": 1,
+        "login": "SuperAdmin",
+        "password": "123456"
+    }
+]

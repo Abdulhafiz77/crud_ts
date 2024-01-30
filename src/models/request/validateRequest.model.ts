@@ -1,7 +1,7 @@
 import express = require('express');
 import { ContainerTypes, ValidatedRequestSchema } from "express-joi-validation";
 import { ParsedQs } from 'qs'
-import { StaffModel } from '..';
+import { StaffModel } from '../..';
 
 export interface ValidatedRequest<T extends ValidatedRequestSchema> extends express.Request {
   body: T[ContainerTypes.Body]

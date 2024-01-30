@@ -1,50 +1,54 @@
 import { Request, Response } from 'express'
 import { GameRepository } from '../repository';
-import { GameModel } from '../models';
+import { ErrorEnum, GameModel, PaginationParams, ValidatedRequestBody, ValidatedRequestQuery } from '../models';
+import { ValidatedRequest } from 'express-joi-validation';
+import { ErrorService, getPaginationResponse } from '../utils';
 
 
 export class GameController {
-    static async getAll(req:Request, res: Response) {
+    static async getAll(req: ValidatedRequest<ValidatedRequestQuery<PaginationParams>>, res) {
         try {
-          let data = await GameRepository.getAll(req.query);
-          res.status(200).json(data)
-        } catch (error) {         
-            res.status(500).send(console.log(error))
+
+            let data = await GameRepository.getAll(req.body);
+            return res.send(data);
+        } catch (error) {
+            return ErrorService.error(res, error);
         }
     }
-    static async getById(req: Request, res: Response) {
+    static async getById(req: ValidatedRequest<any>, res) {
         try {
 
             let data = await GameRepository.getById(req.params.id);
             return res.send(data);
         } catch (error) {
-            return res.send(console.log(error)
-            );
+            return ErrorService.error(res, error);
         }
     }
-    static async create(req: Request, res: Response) {
+    static async create(req: ValidatedRequest<ValidatedRequestBody<GameModel>>, res) {
         try {
 
             const data = await GameRepository.create(req.body)
+
             return res.send(data);
 
         } catch (error) {
-            res.send(console.log(error))
+            return ErrorService.error(res, error);
         }
     }
-    static async update(req: Request, res: Request) {
+    static async update(req: ValidatedRequest<ValidatedRequestBody<GameModel>>, res) {
         try {
             req.body.id = req.params.id;
-        
+
+            let checkId = await GameRepository.getById(req.params.id);
             let data = await GameRepository.update(req.body);
 
-            return res.send({succes: true});
+            return res.send(data);
         } catch (error) {
-            return res.send(console.log(error)
-            )
+            return ErrorService.error(res, error);
         }
     }
-    static async delete(req: Request, res: Response) {
+
+    static async delete(req: ValidatedRequest<any>, res) {
         try {
 
             await GameRepository.delete(req.params.id);
@@ -52,8 +56,7 @@ export class GameController {
             return res.send({ success: true });
 
         } catch (error) {
-            return res.send(console.log(error)
-            );
+            return ErrorService.error(res, error);
         }
     }
 }
