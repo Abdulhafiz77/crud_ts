@@ -1,8 +1,7 @@
-export interface GameModel {
- id: number,
+import { BaseModel } from "./base.model";
+
+export interface GameModel extends BaseModel {
  name: string,
  discription: string | null,
- version: number,
- create_at: Date,
- update_at: Date
+ version: number
 }

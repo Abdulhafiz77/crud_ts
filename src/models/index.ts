@@ -1,1 +1,6 @@
 export * from './game.model'
+export * from './error.enam'
+export * from './base.model'
+export * from './staff.model'
+export * from './validateRequest.model'
+export * from './token.payload'
