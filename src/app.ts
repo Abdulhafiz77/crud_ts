@@ -1,6 +1,9 @@
 import express from 'express'
 import http from 'http'
 import { routes } from '.';
+import * as swaggerUi from 'swagger-ui-express'
+import * as path from 'path';
+const swagger = require('../swagger')
 
 class ServerModule {
 
@@ -20,6 +23,7 @@ class ServerModule {
         this.http = http.createServer(this.app);
         this.app.use(express.json({ limit: '50mb' }));
         this.app.use(express.urlencoded({ extended: true }));
+        this.app.use('/swagger', swaggerUi.serve, swaggerUi.setup(swagger, { "showExplorer": true }))
         routes(this.app)
         this.http.listen(
             this.port,

@@ -1,0 +1,124 @@
+{
+    "get": {
+        "tags": [
+            "Staff"
+        ],
+        "security": [
+            {
+                "Bearer": [
+                    "User"
+                ]
+            }
+        ],
+        "summary": "GET Staff by id",
+        "operationId": "GET Staff by id",
+        "parameters": [
+            {
+                "in": "path",
+                "name": "id",
+                "required": true,
+                "type": "number"
+            }
+        ],
+        "responses": {
+            "200": {
+                "description": "",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/components/schemas/Staff"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "put": {
+        "tags": [
+            "Staff"
+        ],
+        "security": [
+            {
+                "Bearer": [
+                    "User"
+                ]
+            }
+        ],
+        "summary": "update Staff",
+        "operationId": "update Staff",
+        "parameters": [
+            {
+                "in": "path",
+                "name": "id",
+                "required": true,
+                "type": "number"
+            }
+        ],
+        "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AddStaff"
+                }
+              }
+            },
+            "required": true
+          },
+        "responses": {
+            "200": {
+                "description": "",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/Staff"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "delete": {
+        "tags": [
+            "Staff"
+        ],
+        "security": [
+            {
+                "Bearer": [
+                    "User"
+                ]
+            }
+        ],
+        "summary": "Delete by id Staff",
+        "operationId": "Delete by id Staff",
+        "parameters": [
+            {
+                "in": "path",
+                "name": "id",
+                "required": true,
+                "type": "number",
+                "default": 1
+            }
+        ],
+        "responses": {
+            "200": {
+                "description": "",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean",
+                                    "default": true
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

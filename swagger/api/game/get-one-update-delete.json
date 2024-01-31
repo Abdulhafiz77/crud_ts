@@ -1,0 +1,124 @@
+{
+"get": {
+    "tags": [
+        "Game"
+    ],
+    "security": [
+        {
+            "Bearer": [
+                "Games"
+            ]
+        }
+    ],
+    "summary": "GET Game by id",
+    "operationId": "GET Game by id",
+    "parameters": [
+        {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "number"
+        }
+    ],
+    "responses": {
+        "200": {
+            "description": "",
+            "content": {
+                "application/json": {
+                    "schema": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Game"
+                        }
+                    }
+                }
+            }
+        }
+    }
+},
+"put": {
+    "tags": [
+        "Game"
+    ],
+    "security": [
+        {
+            "Bearer": [
+                "Games"
+            ]
+        }
+    ],
+    "summary": "update Game",
+    "operationId": "update Game",
+    "parameters": [
+        {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "number"
+        }
+    ],
+    "requestBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/AddGame"
+            }
+          }
+        },
+        "required": true
+      },
+    "responses": {
+        "200": {
+            "description": "",
+            "content": {
+                "application/json": {
+                    "schema": {
+                        "$ref": "#/components/schemas/Game"
+                    }
+                }
+            }
+        }
+    }
+},
+"delete": {
+    "tags": [
+        "Game"
+    ],
+    "security": [
+        {
+            "Bearer": [
+                "Games"
+            ]
+        }
+    ],
+    "summary": "Delete by id Game",
+    "operationId": "Delete by id Game",
+    "parameters": [
+        {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "number",
+            "default": 1
+        }
+    ],
+    "responses": {
+        "200": {
+            "description": "",
+            "content": {
+                "application/json": {
+                    "schema": {
+                        "type": "object",
+                        "properties": {
+                            "success": {
+                                "type": "boolean",
+                                "default": true
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+}

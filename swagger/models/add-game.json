@@ -1,0 +1,26 @@
+{
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "number",
+            "default": 1
+        },
+        "name": {
+            "type": "string",
+            "default": "url"
+        },
+        "discription": {
+            "type": "string",
+            "default": "string"
+        },
+        "version": {
+            "type": "string",
+            "default": "string"
+        }
+    },
+    "required": [
+        "name",
+        "discription",
+        "version"
+      ]
+}

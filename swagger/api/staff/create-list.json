@@ -1,0 +1,96 @@
+{
+    "post": {
+      "tags": [
+        "Staff"
+      ],
+      "security": [
+        {
+          "Bearer": [
+            "User"
+          ]
+        }
+      ],
+      "summary": "Save Staff",
+      "operationId": "saveStaff",
+      "requestBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/AddStaff"
+            }
+          }
+        },
+        "required": true
+      },
+      "responses": {
+        "200": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "success": {
+                    "type": "boolean",
+                    "default": true
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "get": {
+      "tags": [
+        "Staff"
+      ],
+      "security": [
+        {
+          "Bearer": [
+            "User"
+          ]
+        }
+      ],
+      "summary": "GET Staff list",
+      "operationId": "getStaffList",
+      "parameters": [
+        {
+          "in": "query",
+          "name": "page",
+          "required": false,
+          "type": "integer",
+          "default": 1
+        },
+        {
+          "in": "query",
+          "name": "limit",
+          "required": false,
+          "type": "integer",
+          "default": 10
+        },
+        {
+          "in": "query",
+          "name": "status",
+          "required": false,
+          "type": "integer",
+          "default": 10
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "Success response",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Staff"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }

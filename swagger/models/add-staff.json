@@ -1,0 +1,41 @@
+{
+    "type": "object",
+    "properties": {
+        "role_id": {
+            "type": "number",
+            "default": 1
+        },
+        "login": {
+            "type": "string",
+            "default": "string"
+        },
+        "password": {
+            "type": "string",
+            "default": "string"
+        },
+        "first_name": {
+            "type": "string",
+            "default": "url"
+        },
+        "last_name": {
+            "type": "string",
+            "default": "string"
+        },
+        "middle_name": {
+            "type": "string",
+            "default": "string"
+        },
+        "phone": {
+            "type": "string",
+            "default": "string"
+        }
+    },
+    "required": [
+        "login",
+        "password",
+        "first_name",
+        "phone",
+        "last_name",
+        "role_id"
+      ]
+}
